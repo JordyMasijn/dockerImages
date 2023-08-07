@@ -28,4 +28,6 @@ jobs:
           context: containers/liquibase-sops-aws-rds
           file: containers/liquibase-sops-aws-rds/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/liquibase-sops-aws-rds:latest
+          tags: | 
+            ${{ secrets.DOCKERHUB_USERNAME }}/liquibase-sops-aws-rds:4.23
+            ${{ secrets.DOCKERHUB_USERNAME }}/liquibase-sops-aws-rds:latest

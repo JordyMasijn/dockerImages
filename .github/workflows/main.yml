@@ -31,6 +31,8 @@ jobs:
           tags: | 
             ${{ secrets.DOCKERHUB_USERNAME }}/liquibase-sops-aws-rds:4.23
             ${{ secrets.DOCKERHUB_USERNAME }}/liquibase-sops-aws-rds:latest
+          cache-from: type=registry,ref=containers/liquibase-sops-aws-rds:latest
+          cache-to: type=inline
       -
         name: Build and push
         uses: docker/build-push-action@v4
@@ -41,6 +43,8 @@ jobs:
           tags: | 
             ${{ secrets.DOCKERHUB_USERNAME }}/debian-awscli:1.0.0
             ${{ secrets.DOCKERHUB_USERNAME }}/debian-awscli:latest
+          cache-from: type=registry,ref=containers/debian-awscli:latest
+          cache-to: type=inline
       -
         name: Build and push
         uses: docker/build-push-action@v4
@@ -50,4 +54,6 @@ jobs:
           push: true
           tags: | 
             ${{ secrets.DOCKERHUB_USERNAME }}/alpine-awscli:1.0.0
-            ${{ secrets.DOCKERHUB_USERNAME }}/alpine-awscli:latest          
+            ${{ secrets.DOCKERHUB_USERNAME }}/alpine-awscli:latest
+          cache-from: type=registry,ref=containers/alpine-awscli:latest
+          cache-to: type=inline

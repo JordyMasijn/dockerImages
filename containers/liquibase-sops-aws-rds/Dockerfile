@@ -10,6 +10,8 @@ RUN wget https://github.com/getsops/sops/releases/download/v${SOPS_VERSION}/sops
     && sops --version
 
 COPY ./scripts /root/scripts
-RUN ls -l /root/scripts/ && /root/scripts/import-rds-root-ca.sh
+RUN ls -l /root/scripts/ \
+    && chmod u+x /root/scripts/import-rds-root-ca.sh \ 
+    && /root/scripts/import-rds-root-ca.sh
 
 USER liquibase

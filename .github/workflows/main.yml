@@ -25,7 +25,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: ./containers/liquibase-sops-aws-rds
-          file: ./Dockerfile
+          context: containers/liquibase-sops-aws-rds
+          file: containers/liquibase-sops-aws-rds/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/liquibase-sops-aws-rds:latest

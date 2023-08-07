@@ -1,4 +1,4 @@
-FROM liquibase/liquibase:4.23.0
+FROM liquibase/liquibase:4.11.0
 
 ARG SOPS_VERSION="3.7.3"
 
@@ -12,6 +12,6 @@ RUN wget https://github.com/getsops/sops/releases/download/v${SOPS_VERSION}/sops
 COPY ./scripts /root/scripts
 RUN ls -l /root/scripts/ \
     && chmod u+x /root/scripts/import-rds-root-ca.sh \ 
-    && /root/scripts/import-rds-root-ca.sh
+    && /bin/sh /root/scripts/import-rds-root-ca.sh
 
 USER liquibase

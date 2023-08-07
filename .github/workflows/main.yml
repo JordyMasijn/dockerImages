@@ -31,3 +31,23 @@ jobs:
           tags: | 
             ${{ secrets.DOCKERHUB_USERNAME }}/liquibase-sops-aws-rds:4.23
             ${{ secrets.DOCKERHUB_USERNAME }}/liquibase-sops-aws-rds:latest
+      -
+        name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          context: containers/debian-awscli
+          file: containers/debian-awscli/Dockerfile
+          push: true
+          tags: | 
+            ${{ secrets.DOCKERHUB_USERNAME }}/debian-awscli:1.0.0
+            ${{ secrets.DOCKERHUB_USERNAME }}/debian-awscli:latest
+      -
+        name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          context: containers/alpine-awscli
+          file: containers/alpine-awscli/Dockerfile
+          push: true
+          tags: | 
+            ${{ secrets.DOCKERHUB_USERNAME }}/alpine-awscli:1.0.0
+            ${{ secrets.DOCKERHUB_USERNAME }}/alpine-awscli:latest          

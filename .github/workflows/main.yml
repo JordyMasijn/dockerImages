@@ -57,3 +57,15 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }}/alpine-awscli:latest
           cache-from: type=registry,ref=containers/alpine-awscli:latest
           cache-to: type=inline
+      -
+        name: Build and push maintenance-page
+        uses: docker/build-push-action@v4
+        with:
+          context: containers/maintenance-page
+          file: containers/maintenance-page/Dockerfile
+          push: true
+          tags: | 
+            ${{ secrets.DOCKERHUB_USERNAME }}/maintenance-page:1.0.0
+            ${{ secrets.DOCKERHUB_USERNAME }}/maintenance-page:latest
+          cache-from: type=registry,ref=containers/maintenance-page:latest
+          cache-to: type=inline

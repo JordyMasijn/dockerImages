@@ -1,4 +1,4 @@
-name: build-and-push-dockerImages
+name: build and push debian-awscli image
 
 on:
   push:

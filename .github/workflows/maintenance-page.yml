@@ -1,0 +1,37 @@
+name: build-and-push-dockerImages
+
+on:
+  push:
+    branches:
+      - "main"
+    paths: 
+      - containers/maintenance-page/**
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      -
+        name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      -
+        name: Build and push maintenance-page
+        uses: docker/build-push-action@v4
+        with:
+          context: containers/maintenance-page
+          file: containers/maintenance-page/Dockerfile
+          push: true
+          tags: | 
+            ${{ secrets.DOCKERHUB_USERNAME }}/maintenance-page:1.0.0
+            ${{ secrets.DOCKERHUB_USERNAME }}/maintenance-page:latest
+          cache-from: type=registry,ref=containers/maintenance-page:latest
+          cache-to: type=inline

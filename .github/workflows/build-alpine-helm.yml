@@ -5,7 +5,7 @@ on:
     branches:
       - "main"
     paths: 
-      - containers/maintenance-page/**
+      - containers/alpine-helm/**
 
 jobs:
   build:

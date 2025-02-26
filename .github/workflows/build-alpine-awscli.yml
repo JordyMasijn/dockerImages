@@ -10,7 +10,4 @@ jobs:
     uses: ./.github/workflows/reuse-workflow.yml
     with:
       container_name: alpine-awscli
-    # secrets dont have to be passed as the reusable workflow can ask it from the repository (it's the same repository as the caller)
-    # secrets:
-    #   dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
-    #   dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
+    secrets: inherit

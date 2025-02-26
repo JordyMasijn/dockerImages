@@ -7,13 +7,7 @@ on:
         description: 'Name of the container (and folder) to build and push'
         required: true
         type: string
-    # secrets dont have to be asked as the repository already has them as it's the same repository as the caller
-    # secrets:
-    #   dockerhub_username:
-    #     required: true
-    #   dockerhub_token:
-    #     required: true
-
+        
 jobs:
   reusable_docker_build_workflow_job:
     runs-on: ubuntu-latest

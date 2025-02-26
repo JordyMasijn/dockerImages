@@ -7,7 +7,7 @@ on:
         description: 'Name of the container (and folder) to build and push'
         required: true
         type: string
-        
+
 jobs:
   reusable_docker_build_workflow_job:
     runs-on: ubuntu-latest
@@ -26,7 +26,7 @@ jobs:
         id: calculate_tag
         run: |
           id=$(echo ${{ github.ref_name }} | awk -F'/' '{print $NF}')
-          echo ::set-output name=tag::$id
+          echo "tag=$id" >> $GITHUB_OUTPUT
         
       - name: Build and push
         uses: docker/build-push-action@v5
